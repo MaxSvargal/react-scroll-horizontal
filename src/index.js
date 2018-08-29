@@ -55,6 +55,12 @@ export default class ScrollHorizontal extends Component {
         : this.setState({ animValues: newAnimationValue })
     }
 
+    this.props.onScroll && this.props.onScroll(
+      this.props.reverseScroll
+        ? newAnimationValueNegative
+        : newAnimationValue
+    )
+
     // Begin Scrolling Animation
     window.requestAnimationFrame(scrolling)
   }
@@ -170,7 +176,8 @@ ScrollHorizontal.propTypes = {
   config: PropTypes.object,
   style: PropTypes.object,
   className: PropTypes.string,
-  children: PropTypes.array.isRequired
+  children: PropTypes.array.isRequired,
+  onScroll: PropTypes.func
 }
 
 ScrollHorizontal.defaultProps = {
@@ -178,5 +185,6 @@ ScrollHorizontal.defaultProps = {
   pageLock: false,
   config: null,
   style: { width: `100%`, height: `100%` },
-  className: null
+  className: null,
+  onScroll: null
 }
