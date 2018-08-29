@@ -55,11 +55,7 @@ export default class ScrollHorizontal extends Component {
         : this.setState({ animValues: newAnimationValue })
     }
 
-    this.props.onScroll && this.props.onScroll(
-      this.props.reverseScroll
-        ? newAnimationValueNegative
-        : newAnimationValue
-    )
+    this.props.onScroll && this.props.onScroll(newAnimationValue)
 
     // Begin Scrolling Animation
     window.requestAnimationFrame(scrolling)
