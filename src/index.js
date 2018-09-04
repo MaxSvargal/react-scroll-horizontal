@@ -7,7 +7,7 @@ export default class ScrollHorizontal extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { animValues: 0 }
+    this.state = { animValues: props.scrollTo }
 
     this.onScrollStart = this.onScrollStart.bind(this)
     this.resetMin = this.resetMin.bind(this)
@@ -173,7 +173,8 @@ ScrollHorizontal.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
   children: PropTypes.array.isRequired,
-  onScroll: PropTypes.func
+  onScroll: PropTypes.func,
+  scrollTo: PropTypes.number
 }
 
 ScrollHorizontal.defaultProps = {
@@ -182,5 +183,6 @@ ScrollHorizontal.defaultProps = {
   config: null,
   style: { width: `100%`, height: `100%` },
   className: null,
-  onScroll: null
+  onScroll: null,
+  scrollTo: 0
 }
