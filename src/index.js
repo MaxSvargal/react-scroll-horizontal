@@ -33,6 +33,12 @@ export default class ScrollHorizontal extends Component {
 
   componentDidUpdate = () => this.calculate()
 
+  static getDerivedStateFromProps(props) {
+    return props.scrollTo !== 0
+      ? { animValues: props.scrollTo }
+      : null
+  }
+
   onScrollStart(e) {
     e.preventDefault()
     // If scrolling on x axis, change to y axis. Otherwise, just get the y deltas.
