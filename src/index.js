@@ -33,10 +33,11 @@ export default class ScrollHorizontal extends Component {
 
   componentDidUpdate = () => this.calculate()
 
-  static getDerivedStateFromProps(props) {
-    return props.scrollTo !== 0
-      ? { animValues: props.scrollTo }
-      : null
+  getSnapshotBeforeUpdate(prevProps) {
+    if (prevProps.scrollTo !== this.props.scrollTo) {
+      this.setState({ animValues: this.props.scrollTo })
+    }
+    return null
   }
 
   onScrollStart(e) {
